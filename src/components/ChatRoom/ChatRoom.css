@@ -1,0 +1,119 @@
+.row-10px {
+  margin-bottom: 0px !important;
+}
+.chatroom {
+  height: 41vh;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 8px 0 rgba(0,0,0, 0.3);
+}
+
+.chatroom .chats {
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: 10px 0 0;
+  height: 31vh;
+  overflow-y: scroll;
+}
+
+.chatroom .chats .chat {
+  background: rgba(255, 255, 255, 0.8);
+  position: relative;
+  padding: 5px 13px;
+  font-size: 14px;
+  border-radius: 10px;
+  list-style: none;
+  float: left;
+  clear: both;
+  margin: 10px 0;
+  max-width: 200px;
+}
+
+.chats .chat img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: 0px;
+}
+
+.chats .chat.right {
+  float: right;
+  clear: both;
+}
+
+.chats .chat a {
+  text-decoration: none;
+  color:#3498DB;
+}
+
+
+/***/
+.video-select-screen h4, .video-select-screen-small h4 {
+  text-align: center;
+}
+
+.video-list .collection-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.convert-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-list {
+  height: 50vh;
+  overflow: scroll;
+}
+
+.video-list .collection-item .btn {
+  margin-left: 10px;
+}
+
+.hovering {
+  border: 3px dashed black !important;
+}
+
+.dropzone {
+  width: 100%;
+  height: 500px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.dropzone-active {
+  border-style: solid;
+  background-color: #66bb6a
+}
+
+.dropzone-reject {
+  border-style: solid;
+  background-color: #e57373;
+}
+
+.video-select-screen {
+  height: 90vh;
+  width: 90vw;
+  margin: 5vh auto;
+}
+
+.video-select-screen-small {
+  height: 25vh;
+  margin: 5vh 0;
+}
+
+.drop-message {
+  display: flex;
+  align-self: center;
+  width: 50%;
+}
