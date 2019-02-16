@@ -38,7 +38,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.svg']
+    extensions: ['.js', '.jsx', '.svg', '.png']
   },
   devServer: {
     historyApiFallback: true,
