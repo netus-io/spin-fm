@@ -33,7 +33,7 @@ ReactDOM.render(
           <Route exact path="/screenLogin"          component={ ScreenLogin }/>
           <Route exact path='/screenCreateUser'     component={ ScreenCreateUser }/>
           <Route exact path='/screenLoungeArea'     component={ ScreenLoungeArea }/>
-          <Route       path="/screenMusicRoom"      component={ ScreenMusicRoom }/>
+          <Route       path="/room/:networkId"      component={ ScreenMusicRoom }/>
         </Switch>
       </div>
     </Router>
