@@ -1,9 +1,18 @@
 const electron = require('electron')
+// const { session } = require('electron')
 const { app, BrowserWindow, ipcMain } = electron
 
 const MainWindow = require('./app/main-window')
 
+// const Portis = require ('@portis/web3')
+// const Web3  = require('web3')
+
+// const portis = new Portis('55f3b60f-eacd-4e7b-8d39-bcf0d516dee1', 'kovan');
+// const web3 = new Web3(portis.provider);
+
 let mainWindow
+let session
+let webContents
 
 function createWindow () {
   mainWindow = new MainWindow(`file://${__dirname}/src/index.html`)
@@ -12,6 +21,14 @@ function createWindow () {
     console.log('MainWindow closed')
     mainWindow = null
   })
+
+  // session = mainWindow.webContents.session
+  webContents = mainWindow.webContents
+
+  // webContents.on('new-window',  (event, url) => {
+  //   console.log('NEW WINDOW: ' + url)
+  //   // event.preventDefault();
+  // })
 }
 
 app.on('ready', createWindow)
@@ -44,6 +61,20 @@ app.on('active', function() {
     createWindow()
   }
 })
+
+
+
+// ipcMain.on('oauth:portis', (event, arg) => {
+//   web3.eth.getAccounts((error, accounts) => {
+//     if(error) {
+//       console.log(`ERROR: ${error}`)
+//       return
+//     }
+//     console.log(`SUCCESS!`)
+//     console.log(`PORTIS ACCOUNT: ${accounts}`);
+//     event.sender.send('oauth:portis:response', accounts);
+//   });
+// })
 
 // ipcMain.on('oauth:accepted', (event, arg) => {
 //   if(arg === true) {

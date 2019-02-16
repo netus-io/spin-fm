@@ -8,7 +8,7 @@ import { actionOne } from '../actions'
 import Portis from '@portis/web3';
 import Web3 from 'web3';
 
-const portis = new Portis('55f3b60f-eacd-4e7b-8d39-bcf0d516dee1', 'mainnet');
+const portis = new Portis('55f3b60f-eacd-4e7b-8d39-bcf0d516dee1', 'kovan');
 const web3 = new Web3(portis.provider);
 
 class ScreenLogin extends Component {
@@ -17,7 +17,8 @@ class ScreenLogin extends Component {
     this.state = {
       dummyStateVar: false
     }
-    this.onSelectedItem = this.onSelectedItem.bind(this)
+    this.onSelectedItem   = this.onSelectedItem.bind(this)
+    this._startPortis     = this._startPortis.bind(this) 
   }
 
   onSelectedItem(obj) {
@@ -34,7 +35,12 @@ class ScreenLogin extends Component {
   _startPortis(){
     console.log('jm portis')
     web3.eth.getAccounts((error, accounts) => {
-      console.log(accounts);
+      if(error) {
+        console.log(`ERROR: ${error}`)
+        return
+      }
+      console.log(`SUCCESS!`)
+      console.log(`PORTIS ACCOUNT: ${accounts}`);
     });
   }
 
