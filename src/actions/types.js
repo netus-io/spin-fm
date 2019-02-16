@@ -1,0 +1,21 @@
+export const ACTION_TYPE_ONE        = 'action_type_one'
+export const ACTION_TYPE_TWO        = 'action_type_two'
+
+export const CREATE_NEW_USER                = 'create_new_user'
+export const CREATE_NEW_USER_FAILURE        = 'create_new_user_failure'
+export const GO_TO_ROOM                     = 'go_to_room'
+export const GO_TO_ROOM_FAILURE             = 'go_to_room_failure'
+export const START_DJING                    = 'start_djing'
+export const STOP_DJING                     = 'stop_djing'
+export const START_DANCING                  = 'start_dancing'
+export const STOP_DANCING                   = 'stop_dancing'
+export const ADD_SONG                       = 'add_song';
+export const REMOVE_SONG                    = 'remove_song';
+export const REMOVE_ALL_SONGS               = 'remove_all_songs';
+export const ADD_SONGS                      = 'add_songs';
+export const SONG_PROCESSING_PROGRESS       = 'song_processing_progress';
+export const SONG_PROCESSING_COMPLETE       = 'song_processing_complete';
+export const ADD_CHATROOM_MESSAGE           = 'add_chatroom_message'
+export const REMOVE_ALL_CHATROOM_MESSAGES   = 'remove_all_chatroom_messages'
+export const ADD_MUSICROOM                  = 'add_musicroom'
+export const REMOVE_MUSICROOM               = 'remove_musicroom'

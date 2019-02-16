@@ -1,16 +1,61 @@
 {
-  "name": "zostest",
+  "name": "spinning-fm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Real-time P2P Decentralized Music Parties",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
+    "electron": "./node_modules/.bin/electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netus-io/spin-fm.git"
+  },
+  "keywords": [
+    "p2p",
+    "netus",
+    "react",
+    "electron",
+    "blockchain"
+  ],
+  "author": "@kPatch",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/netus-io/spin-fm/issues"
+  },
+  "homepage": "https://github.com/netus-io/spin-fm#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-1": "^6.22.0",
+    "css-loader": "^2.1.0",
+    "electron": "4.0.0",
+    "express": "^4.16.4",
+    "install": "^0.12.2",
+    "lodash": "^4.17.11",
+    "moment": "^2.23.0",
+    "moment-duration-format": "^2.2.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-dropzone": "^3.12.2",
+    "react-redux": "^6.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-svg": "^7.2.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "snapsvg-cjs": "0.0.6",
+    "style-loader": "^0.23.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  },
   "dependencies": {
-    "openzeppelin-solidity": "^2.0.0",
-    "truffle": "^5.0.4",
-    "zos": "^2.2.0"
+    "@portis/web3": "^2.0.0-beta.11",
+    "mdbreact": "^4.10.0",
+    "react-scripts": "^2.1.5",
+    "web3": "^1.0.0-beta.46"
   }
 }
