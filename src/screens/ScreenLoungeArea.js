@@ -59,7 +59,7 @@ class ScreenLoungeArea extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('STATE:: ' + JSON.stringify(state))
+  console.log('LOUNGE AREA STATE:: ' + JSON.stringify(state))
   return { 
     dummyStateList:     state.dummyStateList,
   }
