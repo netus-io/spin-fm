@@ -18,7 +18,7 @@ class ScreenLogin extends Component {
       dummyStateVar: false
     }
     this.onSelectedItem   = this.onSelectedItem.bind(this)
-    this._startPortis     = this._startPortis.bind(this) 
+    this._startPortis     = this._startPortis.bind(this)
   }
 
   onSelectedItem(obj) {
@@ -68,11 +68,6 @@ class ScreenLogin extends Component {
             {/*
               <div className="card blue-grey darken-1">
               <div className="card-content">
-              <h1>Login</h1>
-              </div>
-            </div>
-
-
             <div className="card-panel hoverable"> Hoverable Card Panel</div>
 
             */}
@@ -82,12 +77,10 @@ class ScreenLogin extends Component {
               width: '30%',
               height:'100vh'
             }}>
-              <div >
                 <h1>Spin.fm</h1>
-                <Link to="#" onClick={() => this._startPortis()}className="waves-effect waves-light btn-large">
+                <Link to="#" onClick={() => this._startPortis()} className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Log In
                 </Link>
-              </div>
             </div>
 
             <div
