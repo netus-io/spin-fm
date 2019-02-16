@@ -61,24 +61,24 @@ class ScreenCreateUser extends Component {
           alignItems: 'center'
         }}>
           <div className='row'>
-            <div class="col s12 m4 s4">
+            <div className="col s12 m4 s4">
               <div className="card small hoverable"></div>
             </div>
-            <div class="col s12 m4 s4">
+            <div className="col s12 m4 s4">
               <div className="card small hoverable"></div>
             </div>
-            <div class="col s12 m4 s4">
+            <div className="col s12 m4 s4">
               <div className="card small hoverable"></div>
             </div>
           </div>
           <div className='row'>
-            <div class="col s12 m4 s4">
+            <div className="col s12 m4 s4">
               <div className="card small hoverable"></div>
             </div>
-            <div class="col s12 m4 s4">
+            <div className="col s12 m4 s4">
               <div className="card small hoverable"></div>
             </div>
-            <div class="col s12 m4 s4">
+            <div className="col s12 m4 s4">
               <div className="card small hoverable"></div>
             </div>
           </div>
