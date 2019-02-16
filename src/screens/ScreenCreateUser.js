@@ -11,7 +11,8 @@ class ScreenCreateUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dummyStateVar: false
+      dummyStateVar: false,
+      initialAvatar: "https://i.ibb.co/S3njdRS/empty-avatar.png"
     }
     this.onSelectedItem = this.onSelectedItem.bind(this)
   }
@@ -56,7 +57,7 @@ class ScreenCreateUser extends Component {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-              <img className="circle" src={"https://i.ibb.co/S3njdRS/empty-avatar.png"} />
+              <img className="circle" src={this.state.initialAvatar} />
               <h3>[username]</h3>
               <h3>[0x address]</h3>
             </div>
@@ -76,7 +77,7 @@ class ScreenCreateUser extends Component {
                 <Avatar
                   svgId="head-piggy"
                   source="./assets/pig-head.svg"
-                  avatarId="pig-head"
+                  avatarId="head-piggy"
                   animType="HEAD_BOP"
                   />
               </div>
@@ -108,7 +109,7 @@ class ScreenCreateUser extends Component {
               <Avatar
                 svgId="head-robot"
                 source="./assets/robot-head.svg"
-                avatarId="head-robot"
+                avatarId="head-robot-helmet"
                 animType="HEAD_BOP"
                 />
               </div>
