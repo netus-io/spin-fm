@@ -11,7 +11,7 @@ class MainWindow extends BrowserWindow {
       show: true,
       webPreferences: {
         backgroundThrottling: false,
-  
+        nativeWindowOpen: true
       }
     })
 
