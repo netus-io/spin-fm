@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, Text } from 'react-router-dom'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
@@ -32,8 +32,8 @@ class ScreenLogin extends Component {
     })
 
   }
-  _startPortis(){
-    console.log('jm portis')
+
+  componentWillMount() {
     web3.eth.getAccounts((error, accounts) => {
       if(error) {
         console.log(`ERROR: ${error}`)
@@ -42,6 +42,11 @@ class ScreenLogin extends Component {
       console.log(`SUCCESS!`)
       console.log(`PORTIS ACCOUNT: ${accounts}`);
     });
+  }
+
+
+  _startPortis(){
+    console.log('jm portis')
   }
 
   render() {
@@ -58,13 +63,43 @@ class ScreenLogin extends Component {
     }
     return (
       <div>
-        <div className="container">
-          <br/>
-          <div className="row center">
-            <h1>Login</h1>
-            <Link to="#" onClick={() => this._startPortis()}className="waves-effect waves-light btn-large">
-              <i className="material-icons left">open_in_new</i>Log In
-            </Link>
+        <div >
+          <div style={{display:'flex', flexDirection: 'row'}}>
+            {/*
+              <div className="card blue-grey darken-1">
+              <div className="card-content">
+              <h1>Login</h1>
+              </div>
+            </div>
+
+
+            <div className="card-panel hoverable"> Hoverable Card Panel</div>
+
+            */}
+
+            <div
+            style={{
+              width: '30%',
+              height:'100vh'
+            }}>
+              <div >
+                <h1>Spin.fm</h1>
+                <Link to="#" onClick={() => this._startPortis()}className="waves-effect waves-light btn-large">
+                <i className="material-icons left">open_in_new</i>Log In
+                </Link>
+              </div>
+            </div>
+
+            <div
+            style={{
+              backgroundImage: "url(https://backgrounds.wetransfer.net/kklogos_1280x800.jpg)",
+              width:'70%',
+              height:'100vh'
+            }}>
+              <h1></h1>
+            </div>
+
+
           </div>
         </div>
       </div>

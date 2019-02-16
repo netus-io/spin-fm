@@ -5,12 +5,12 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
-          <div className="brand-logo"><Link to="/loungeArea">reactron-base</Link></div>
-          <ul className="right hide-on-med-and-down">
+        <div className="nav-wrapper black">
+          <div className="brand-logo"><Link to="/loungeArea">spin.fm</Link></div>
+            <ul className="right hide-on-med-and-down">
           </ul>
         </div>
-      </nav>        
+      </nav>
     )
   }
 }
