@@ -11,9 +11,13 @@ class MainWindow extends BrowserWindow {
       show: true,
       webPreferences: {
         backgroundThrottling: false,
-        nativeWindowOpen: true
+        webSecurity: false,
+        nativeWindowOpen: true,
+        affinity: 'main-window'
       }
     })
+    // nativeWindowOpen: true,
+    // affinity: 'main-window',
 
     this.loadURL(url)
 
