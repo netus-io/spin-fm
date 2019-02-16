@@ -24,7 +24,6 @@ class MainWindow extends BrowserWindow {
     mainContents.on('did-fail-load', this.onDidFailLoad.bind(this))
     // Monitor render process,reload if it crashes
     mainContents.on('crashed', this.onCrashed.bind(this))
-  
   }
 
   onUnresponsive() {

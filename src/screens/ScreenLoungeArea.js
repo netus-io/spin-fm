@@ -2,28 +2,26 @@ import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-
-import { actionOne } from '../actions'
+import RoomList from '../components/RoomList';
+import { goToRoom } from '../actions'
 
 class ScreenLoungeArea extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dummyStateVar: false
+      queryingNetus: false
     }
-    this.onSelectedItem = this.onSelectedItem.bind(this)
+    this.onSelectedRoom = this.onSelectedRoom.bind(this)
   }
 
-  onSelectedItem(obj) {
+  onSelectedRoom(room) {
     this.setState({
-      dummyStateVar: true
+      queryingNetus: true
     })
-
-    this.props.actionOne(obj, (err, data, response) => {
-      console.log("Action One - Going to ScreenLoungeArea::: " + JSON.stringify(obj))
-      this.props.history.push('/screenLoungeArea/' + obj.name)
+    this.props.goToRoom(room, (err, data, response) => {
+      console.log("LOUNGE ROOM::: " + JSON.stringify(room))
+      this.props.history.push('/room/' + room.networkId)
     })
-
   }
 
   render() {
@@ -43,15 +41,18 @@ class ScreenLoungeArea extends Component {
         <div className="container">
           <br/>
           <div className="row center">
-            <h1>Lounge Area</h1>
-            <Link to="/screenMusicRoom" className="waves-effect waves-light btn-large">
-              <i className="material-icons left">open_in_new</i>Go To Music Room
+            <Link to="/room/create-room" className="waves-effect waves-light btn-large">
+              <i className="material-icons left">open_in_new</i>New Room
+            </Link>
+            <Link to="/room/random-room" className="waves-effect waves-light btn-large">
+              <i className="material-icons right">insert_emoticon</i>Random Room
             </Link>
           </div>
-          <div className="row">
-            <div className="col m3">
-            </div>
-          </div>
+          { preloaderBar }
+          <RoomList
+            musicroomList={ this.props.musicroomList }
+            onSelectedRoom= { this.onSelectedRoom }
+          />
         </div>
       </div>
     )
@@ -61,9 +62,10 @@ class ScreenLoungeArea extends Component {
 function mapStateToProps(state) {
   console.log('STATE:: ' + JSON.stringify(state))
   return { 
-    dummyStateList:     state.dummyStateList,
+    loungeroom:     state.loungeroom,
+    musicroomList:  state.loungeroom.musicroomList 
   }
 }
 
 export { ScreenLoungeArea } // The raw component is useful to have when writing unit tests, and can also increase reusability
-export default connect(mapStateToProps, { actionOne })(ScreenLoungeArea)
+export default connect(mapStateToProps, { goToRoom })(ScreenLoungeArea)

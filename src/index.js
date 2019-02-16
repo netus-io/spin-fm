@@ -5,12 +5,11 @@ import { Provider } from 'react-redux'
 
 
 import store from './reducers'
-
-import Header             from './components/Header'
-import ScreenLogin        from './screens/ScreenLogin'
-import ScreenLoungeArea   from './screens/ScreenLoungeArea'
-import { ScreenCreateUser } from './screens/ScreenCreateUser';
-import { ScreenMusicRoom } from './screens/ScreenMusicRoom';
+import Header                 from './components/Header'
+import ScreenLogin            from './screens/ScreenLogin'
+import ScreenLoungeArea       from './screens/ScreenLoungeArea'
+import ScreenCreateUser       from './screens/ScreenCreateUser';
+import ScreenMusicRoom        from './screens/ScreenMusicRoom';
 
 // Dummy function that sets whether the user is logged in or not
 function isLoggedIn(){
@@ -21,6 +20,7 @@ ReactDOM.render(
   <Provider store={ store }>
     <Router>
       <div className="app">
+        <Header/
         <Switch>
           <Route exact path="/" render={() => (
             isLoggedIn() ? (

@@ -1,10 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import reducerOne    from './reducer_one'
+import playlistReducer    from './playlist_reducer';
+import chatroomReducer    from './chatroom_reducer'
+import musicroomsReducer  from './musicrooms_reducer'
 
 const rootReducer = combineReducers({
-  reducerOne:     reducerOne
+  music:      playlistReducer,
+  chatroom:   chatroomReducer,
+  loungeroom: musicroomsReducer 
 });
 
 const store = createStore(rootReducer, {}, applyMiddleware(thunk));
