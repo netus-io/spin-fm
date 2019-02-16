@@ -5,6 +5,12 @@ import { connect } from 'react-redux'
 
 import { actionOne } from '../actions'
 
+import Portis from '@portis/web3';
+import Web3 from 'web3';
+
+const portis = new Portis('55f3b60f-eacd-4e7b-8d39-bcf0d516dee1', 'mainnet');
+const web3 = new Web3(portis.provider);
+
 class ScreenLogin extends Component {
   constructor(props) {
     super(props)
@@ -25,6 +31,12 @@ class ScreenLogin extends Component {
     })
 
   }
+  _startPortis(){
+    console.log('jm portis')
+    web3.eth.getAccounts((error, accounts) => {
+      console.log(accounts);
+    });
+  }
 
   render() {
     const queryingNetus = this.state.queryingNetus
@@ -44,7 +56,7 @@ class ScreenLogin extends Component {
           <br/>
           <div className="row center">
             <h1>Login</h1>
-            <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
+            <Link to="#" onClick={() => this._startPortis()}className="waves-effect waves-light btn-large">
               <i className="material-icons left">open_in_new</i>Log In
             </Link>
           </div>
@@ -56,7 +68,7 @@ class ScreenLogin extends Component {
 
 function mapStateToProps(state) {
   console.log('STATE:: ' + JSON.stringify(state))
-  return { 
+  return {
     dummyStateList:     state.dummyStateList,
   }
 }
