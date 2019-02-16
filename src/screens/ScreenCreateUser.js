@@ -43,7 +43,8 @@ class ScreenCreateUser extends Component {
         <div
         style={{
           width: '30%',
-          height:'100vh'
+          height:'100vh',
+          backgroundColor: 'black'
         }}>
             <h3>Create New User</h3>
             <Link to="/screenLoungeArea" className="waves-effect waves-light btn-large">
@@ -53,13 +54,23 @@ class ScreenCreateUser extends Component {
 
         <div className=''
         style={{
-          backgroundImage: "url(https://backgrounds.wetransfer.net/kklogos_1280x800.jpg)",
           // width:'70%',
           // height:'100vh',
           flex:1,
           justifyContent: 'center',
           alignItems: 'center'
         }}>
+          <div className='row'>
+            <div class="col s12 m4 s4">
+              <div className="card small hoverable"></div>
+            </div>
+            <div class="col s12 m4 s4">
+              <div className="card small hoverable"></div>
+            </div>
+            <div class="col s12 m4 s4">
+              <div className="card small hoverable"></div>
+            </div>
+          </div>
           <div className='row'>
             <div class="col s12 m4 s4">
               <div className="card small hoverable"></div>

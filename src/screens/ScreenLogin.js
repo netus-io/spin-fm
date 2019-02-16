@@ -82,7 +82,6 @@ class ScreenLogin extends Component {
 
             <div
             style={{
-              backgroundImage: "url(https://backgrounds.wetransfer.net/kklogos_1280x800.jpg)",
               width:'70%',
               height:'100vh'
             }}>
