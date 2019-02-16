@@ -22,7 +22,6 @@ class ScreenLoungeArea extends Component {
       console.log("LOUNGE ROOM::: " + JSON.stringify(room))
       this.props.history.push('/room/' + room.networkId)
     })
-
   }
 
   render() {
