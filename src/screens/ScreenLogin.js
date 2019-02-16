@@ -74,13 +74,17 @@ class ScreenLogin extends Component {
 
             <div
             style={{
-              width: '30%',
-              height:'100vh'
+              // width: '30%',
+              // height:'100vh',
+              display:'flex',
+              flex:1,
+              flexDirection: 'column'
             }}>
                 <h1>Spin.fm</h1>
                 <Link to="#" onClick={() => this._startPortis()} className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Log In
                 </Link>
+                <br />
                 <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Shortcut
                 </Link>
@@ -89,7 +93,8 @@ class ScreenLogin extends Component {
             <div
             style={{
               width:'70%',
-              height:'100vh'
+              height:'100vh',
+              backgroundColor: 'black'
             }}>
               <h1></h1>
             </div>

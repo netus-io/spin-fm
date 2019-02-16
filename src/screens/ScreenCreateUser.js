@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, Image } from 'react-router-dom'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import Avatar from '../components/Avatar'
+
 
 import { actionOne } from '../actions'
 
@@ -9,7 +11,8 @@ class ScreenCreateUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dummyStateVar: false
+      dummyStateVar: false,
+      initialAvatar: "https://i.ibb.co/S3njdRS/empty-avatar.png"
     }
     this.onSelectedItem = this.onSelectedItem.bind(this)
   }
@@ -44,12 +47,20 @@ class ScreenCreateUser extends Component {
         style={{
           width: '30%',
           height:'100vh',
-          backgroundColor: 'black'
+          backgroundColor: 'white',
         }}>
-            <h3>Create New User</h3>
-            <Link to="/screenLoungeArea" className="waves-effect waves-light btn-large">
-              <i className="material-icons left">open_in_new</i>To Lounge Area
-            </Link>
+          <div
+          style={{
+            display:'flex',
+            flexDirection:'column',
+            flex:1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+              <img className="circle" src={this.state.initialAvatar} />
+              <h3>[username]</h3>
+              <h3>[0x address]</h3>
+            </div>
         </div>
 
         <div className=''
@@ -61,30 +72,60 @@ class ScreenCreateUser extends Component {
           alignItems: 'center'
         }}>
           <div className='row'>
-            <div className="col s12 m4 s4">
-              <div className="card small hoverable"></div>
+            <div className="col s12 m4 l4">
+              <div className="card small hoverable">
+                <Avatar
+                  svgId="head-piggy"
+                  source="./assets/pig-head.svg"
+                  avatarId="head-piggy"
+                  animType="HEAD_BOP"
+                  />
+              </div>
             </div>
-            <div className="col s12 m4 s4">
-              <div className="card small hoverable"></div>
+            <div className="col s12 m4 l4">
+              <div className="card small hoverable">
+              <Avatar
+                svgId="head-girl"
+                source="./assets/girl-blond-head.svg"
+                avatarId="head-girl"
+                animType="HEAD_BOP"
+                />
+                </div>
             </div>
-            <div className="col s12 m4 s4">
-              <div className="card small hoverable"></div>
+            <div className="col s12 m4 l4">
+              <div className="card small hoverable">
+              <Avatar
+                svgId="head-boy"
+                source="./assets/boy-brunette-head.svg"
+                avatarId="head-boy"
+                animType="HEAD_BOP"
+                />
+                </div>
             </div>
           </div>
           <div className='row'>
-            <div className="col s12 m4 s4">
+            <div className="col s12 m4 l4">
+              <div className="card small hoverable">
+              <Avatar
+                svgId="head-robot"
+                source="./assets/robot-head.svg"
+                avatarId="head-robot-helmet"
+                animType="HEAD_BOP"
+                />
+              </div>
+            </div>
+            <div className="col s12 m4 l4">
               <div className="card small hoverable"></div>
             </div>
-            <div className="col s12 m4 s4">
-              <div className="card small hoverable"></div>
-            </div>
-            <div className="col s12 m4 s4">
+            <div className="col s12 m4 l4">
               <div className="card small hoverable"></div>
             </div>
           </div>
-          <Link to="/screenLoungeArea" className="waves-effect waves-light btn-large">
-            <i className="material-icons left">open_in_new</i>Create a character
-          </Link>
+          <div className="row center">
+            <Link to="/screenLoungeArea" className=" waves-effect waves-light btn-large">
+              <i className=" material-icons left">open_in_new</i>Create character
+            </Link>
+          </div>
       </div>
     </div>
     )
