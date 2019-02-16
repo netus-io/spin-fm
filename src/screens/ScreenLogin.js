@@ -63,14 +63,8 @@ class ScreenLogin extends Component {
     }
     return (
       <div>
-        <div >
+        <div>
           <div style={{display:'flex', flexDirection: 'row'}}>
-            {/*
-              <div className="card blue-grey darken-1">
-              <div className="card-content">
-            <div className="card-panel hoverable"> Hoverable Card Panel</div>
-
-            */}
 
             <div
             style={{
@@ -80,6 +74,9 @@ class ScreenLogin extends Component {
                 <h1>Spin.fm</h1>
                 <Link to="#" onClick={() => this._startPortis()} className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Log In
+                </Link>
+                <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
+                <i className="material-icons left">open_in_new</i>Shortcut
                 </Link>
             </div>
 

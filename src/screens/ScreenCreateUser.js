@@ -38,24 +38,51 @@ class ScreenCreateUser extends Component {
       preloaderBar = <div></div>
     }
     return (
-      <div>
-        <div className="container">
-          <br/>
-          <div className="row center">
-            <h1>Create User</h1>
+      <div style={{display:'flex', flexDirection: 'row'}}>
+
+        <div
+        style={{
+          width: '30%',
+          height:'100vh'
+        }}>
+            <h3>Create New User</h3>
             <Link to="/screenLoungeArea" className="waves-effect waves-light btn-large">
               <i className="material-icons left">open_in_new</i>To Lounge Area
             </Link>
-          </div>
         </div>
+
+        <div className=''
+        style={{
+          backgroundImage: "url(https://backgrounds.wetransfer.net/kklogos_1280x800.jpg)",
+          // width:'70%',
+          // height:'100vh',
+          flex:1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <div className='row'>
+            <div class="col s12 m4 s4">
+              <div className="card small hoverable"></div>
+            </div>
+            <div class="col s12 m4 s4">
+              <div className="card small hoverable"></div>
+            </div>
+            <div class="col s12 m4 s4">
+              <div className="card small hoverable"></div>
+            </div>
+          </div>
+          <Link to="/screenLoungeArea" className="waves-effect waves-light btn-large">
+            <i className="material-icons left">open_in_new</i>Create a character
+          </Link>
       </div>
+    </div>
     )
   }
 }
 
 function mapStateToProps(state) {
   console.log('STATE:: ' + JSON.stringify(state))
-  return { 
+  return {
     dummyStateList:     state.dummyStateList,
   }
 }
