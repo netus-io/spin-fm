@@ -1,0 +1,5 @@
+.borderRadiusImportant {
+  padding-top: '20vh';
+  border-radius:'20px !important';
+  background-color: 'rgba(52, 52, 52, 0.8)'
+}
