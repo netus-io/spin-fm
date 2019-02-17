@@ -96,19 +96,19 @@ class P2PServer {
 
   syncMetadata() {
     this.server.clients.forEach(socket => {
-      this.sendMetadata(socket)
+      this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
     })
   }
 
   broadcastMetadata(messageType, transaction) {
     this.server.clients.forEach(socket => {
-      this.sendMetata(messageType, socket)
+      this.sendMetadata(messageType, socket)
     })
   }
 
   broadcastClearMetadata(messageType, transaction) {
     this.server.clients.forEach(socket => {
-      this.sendMetata(MESSAGE_TYPES.metadataClear, socket)
+      this.sendMetadata(MESSAGE_TYPES.metadataClear, socket)
     })
   }
 }
