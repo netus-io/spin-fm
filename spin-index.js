@@ -3,7 +3,9 @@ const bodyParser  = require('body-parser')
 const multer = require('multer');
 const Metadata    = require('./spin-metadata')
 const P2PServer   = require('./spin-p2p-server')
-
+const fs          = require('fs')
+var ip = require("ip");
+// console.dir ( ip.address() );
 const HTTP_PORT = process.env.HTTP_PORT || 3001
 // HTTP_PORT=3002 npm run dev //example
 
@@ -56,9 +58,20 @@ app.post('/addNewSong', upload.any(), (req, res) => {
     const uploadStatus = 'File Uploaded Successfully'
     // const song = metadata.addMetadata({ songName:  req.files[0].originalname, data: req.body.data })
     console.log('AFTER_ADD:: ' + metadata)
-    p2pServer.metadata.addMetadata({ songName:  req.files[0].originalname, data: req.body.data })
+
+    // fs.readFile(req.files[0].path, function(err, data) {
+    //   if(err) {
+    //     throw err
+    //   }
+    //   p2pServer.metadata.addMetadata({ songName:  req.files[0].originalname, data: data })
+    //   p2pServer.syncMetadata()
+    //   res.redirect('/metadata') // Share updated metadata
+    // })
+
+    p2pServer.metadata.addMetadata({ songName:  req.files[0].originalname, data: ip.address() })
     p2pServer.syncMetadata()
     res.redirect('/metadata') // Share updated metadata
+
   } else {
     console.log('No File Uploaded')
     const filename = 'FILE NOT UPLOADED'
