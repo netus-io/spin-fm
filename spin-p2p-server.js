@@ -13,6 +13,7 @@ const MESSAGE_TYPES = {
   djLeft:         'DJ_LEFT',
   djNext:         'DJ_NEXT',
   djDancing:      'DJ_DANCING',
+  djWelcome:      'DJ_WELCOME',
   songNew:        'SONG_NEW',
   songRemoved:    'SONG_REMOVED',
   metadataShare:  'METADATA_SHARE',
@@ -29,7 +30,7 @@ class P2PServer {
 
   listen() {
     this.server = new WebSocket.Server({ port: P2P_PORT})
-    this.server.on('connection', (socket) => this.connectSocket(socket))
+    this.server.on('connection', (socket) => this.connectSocket(MESSAGE_TYPES.djWelcome, socket))
 
     this.connectToPeers()
     console.log(`Listening for peer-to-peer connetions on: ${P2P_PORT}`)
@@ -48,7 +49,7 @@ class P2PServer {
     peers.forEach(peer => {
       // ws://localhost:5001 // example
       const socket = new WebSocket(peer)
-      socket.on('open', () => this.connectSocket(socket))
+      socket.on('open', () => this.connectSocket(MESSAGE_TYPES.djNew, socket))
     })
   }
  
@@ -57,7 +58,7 @@ class P2PServer {
     console.log('\tHEARTBEAT..')
   }
 
-  connectSocket(socket) {
+  connectSocket(messageType, socket) {
     // this.sockets.push(socket)
     console.log('Connecting to socket...')
     socket.isAlive = true
@@ -65,7 +66,7 @@ class P2PServer {
     socket.on('pong', this.heartbeat);
 
     this.messageHandler(socket)
-    this.sendMetadata(MESSAGE_TYPES.djNew, socket)
+    this.sendMetadata(messageType, socket)
   }
 
   messageHandler(socket) {
@@ -75,7 +76,7 @@ class P2PServer {
       // this.roomMetadata.replaceMetadata(data)
       switch(data.type) {
         case MESSAGE_TYPES.djNew:
-        this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
+          this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
           break
         case MESSAGE_TYPES.djNext:
           break
