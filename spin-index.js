@@ -18,8 +18,7 @@ const p2pServer = new P2PServer(metadata)
 app.use(bodyParser.json())
 
 app.get('/metadata', (req, res) => {
-  // res.json(metadata.metadata)
-  res.json('HEY!!!!!')
+  res.json(metadata.metadata.length)
 })
 
 app.get('/spinningfm')
@@ -35,10 +34,10 @@ app.post('/addSong', (req, res) => {
 
 // Adding a song is like mining
 app.post('/addNewSong', upload.single('file-to-upload'), (req, res) => {
-  const song = metdata.addMetadata(req.body.data)
+  const song = metadata.addMetadata(req.body.data)
   console.log(`New song added to the queue: ${song.toString()}`)
 
-  p2pServer.syncMetdata()
+  p2pServer.syncMetadata()
 
   res.redirect('/metadata') // Share updated metadata
 });

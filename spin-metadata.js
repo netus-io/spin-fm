@@ -5,7 +5,8 @@ class Metadata {
 
   addMetadata(data) {
     this.metadata.push(data)
-    return metadata
+    // return this.metadata
+    return 'METADATA_LENGTH' + this.metadata.length
   }
 
   replaceMetadata(newMetadata) {
