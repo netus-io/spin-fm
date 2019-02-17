@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, Link, Text } from 'react-router-dom'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-
+import tx from './ethereumjs-tx'
 import { actionOne } from '../actions'
 import truffleContract from "truffle-contract";
 
@@ -35,12 +35,28 @@ class ScreenLogin extends Component {
   }
 
   componentWillMount () {
+    console.log(tx +"sjfowajefp")
     console.log("mounting !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     console.log(Avatar)
     var web3 = new Web3(new Web3.providers.HttpProvider('https://sokol.poa.network'))
+    //let web3 = new Web3(new Web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
     let avatar=new web3.eth.Contract(Avatar.abi, "0xd2f44fa6eccc4e04e9ccee6ada1a91dbe7e2c8a8")
+    console.log(avatar)
     avatar.methods.createdTokens().call().then((result)=>{console.log(result+"tokens")})
-
+    const TX={
+      from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
+      gasPrice: "20000000000",
+      gas: "21000",
+      to: '0x3535353535353535353535353535353535353535',
+      value: "1000000000000000000",
+      data: ""
+  }
+  var transaction = new tx(TX)
+   transaction.sign('BCA93B325843D996FF4E3F68A66DB374BDCA103E0B7E9374AB00C0BEFD75A99E')
+   console.log(transaction)
+   const serializedTx = transaction.serialize().toString('hex')
+   console.log(serializedTx)
+   //web3.eth.sendSignedTransaction('0x' + serializedTx)
     // let accounts=web3.eth.accounts.privateKeyToAccount('BCA93B325843D996FF4E3F68A66DB374BDCA103E0B7E9374AB00C0BEFD75A99E');
     // console.log(JSON.stringify(accounts)+"accoisjoiej")
     // //avatar.methods.createdTokens().mint().send()
@@ -53,7 +69,7 @@ class ScreenLogin extends Component {
       console.log('FIRST ACCOUNT: ' + r)
     })
     
-    console.log(web3.eth.personal)
+   
 
     web3.eth.personal.newAccount('password')
     .then((e) => {
@@ -66,7 +82,7 @@ class ScreenLogin extends Component {
     
    // web3 = new Web3(web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
     // console.log(web3.currentProvider)
-    // const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
+   
     // var web3 = new Web3()
     //web3 = new Web3(web3.currentProvider)
     //web3 = new Web3(web3.setProvider())
