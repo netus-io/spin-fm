@@ -217,22 +217,26 @@ class ScreenMusicRoom extends Component {
             {/* <!-- END OF DANCEFLOOR-ROW --> */}
             {/* <!-- START OF GAUGE-ROW --> */}
             <div className='center' style={{transform:'rotate(270deg)'}}>
-            <Gauge
-              size='400'
-              currentValue='10'
-              dialWidth='30'
-              dialColor='gray'
-              progressWidth='40'
-              progressColor='green'
-              needleColor='green'
-              tickLength='10'
-              tickWidth='5'
-              needleBaseSize='5'
-              needleBaseColor='black'
-              progressFontSize='0'
-            />
+              <Gauge
+                size='400'
+                currentValue='10'
+                dialWidth='30'
+                dialColor='gray'
+                progressWidth='40'
+                progressColor='green'
+                needleColor='green'
+                tickLength='10'
+                tickWidth='5'
+                needleBaseSize='5'
+                needleBaseColor='black'
+                progressFontSize='0'
+              />
             </div>
             {/* <!-- /END OF GAUGE-ROW --> */}
+            <i
+              className="center material-icons btn-floating right"
+              onClick={ () => {console.log('jm clicked')} }
+            >clear</i>
           </div>
           {/* <!-- /END OF MAIN-STAGE COLUMN --> */}
 

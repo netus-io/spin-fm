@@ -68,38 +68,30 @@ class ScreenLogin extends Component {
       preloaderBar = <div></div>
     }
     return (
-      <div>
-        <div>
-          <div style={{display:'flex', flexDirection: 'row'}}>
-
+      <div
+      style={{
+        flex:1,
+        height:'100vh',
+        backgroundColor: 'black',
+        backgroundImage: 'url(https://backgrounds.wetransfer.net/sudanarchives1_1280x800.jpg)'
+      }}>
+        <div
+        className="container">
+          <div
+          className="row center">
             <div
-            style={{
-              // width: '30%',
-              // height:'100vh',
-              display:'flex',
-              flex:1,
-              flexDirection: 'column'
-            }}>
+            className="card large">
                 <h1>Spin.fm</h1>
-                <Link to="#" onClick={() => this._startPortis()} className="waves-effect waves-light btn-large">
+                <Link to="#" onClick={() => this._startPortis()} className="light-blue waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Log In
                 </Link>
+
                 <br />
+
                 <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Shortcut
                 </Link>
             </div>
-
-            <div
-            style={{
-              width:'70%',
-              height:'100vh',
-              backgroundColor: 'black'
-            }}>
-              <h1></h1>
-            </div>
-
-
           </div>
         </div>
       </div>
