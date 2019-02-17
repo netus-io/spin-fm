@@ -9,9 +9,9 @@ class AudioPlayer extends Component {
   componentDidMount() {
     const audio = this.audioRef
 
-    audio.addEventListener('loadedmetadata', (e) => {
-      audio.currentTime = 180
-    }, false)
+    // audio.addEventListener('loadedmetadata', (e) => {
+    //   audio.currentTime = 180
+    // }, false)
 
     audio.addEventListener('canplay', (e) => {
       audio.play()
@@ -19,7 +19,7 @@ class AudioPlayer extends Component {
 
     audio.addEventListener('ended', (e) => { 
       console.log('SRC: ' + this.src) 
-      audio.src = audio.src + '?next=true'
+      // audio.src = audio.src + '?next=true'
       audio.load()
       audio.currentTime = 0
       audio.play()

@@ -165,7 +165,7 @@ class ScreenMusicRoom extends Component {
               {/* <audio id = "audio-player" controls autoPlay src="http://localhost:3000/spinningfm#t=80"></audio> */}
               <AudioPlayer
                 id = 'audio-player'
-                src="http://localhost:3000/spinningfm"
+                src="http://localhost:2000/spinfm?songName=track0.mp3"
                 controls={true}
               />
             </div>
