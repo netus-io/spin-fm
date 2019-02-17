@@ -1,22 +1,22 @@
 class Metadata {
   constructor() {
-    this.metadata = []
+    this.songs = []
   }
 
   addMetadata(data) {
-    this.metadata.push(data)
+    this.songs.push(data)
     // return this.metadata
-    return 'METADATA_LENGTH' + this.metadata.length
+    // return 'METADATA_LENGTH' + this.songs.length
   }
 
   replaceMetadata(newMetadata) {
-    this.metadata = newMetadata
+    this.songs = newMetadata
   }
 
   toString() {
     var ret = ''
-    for(var i = 0; i < this.metadata.length; i++) {
-      ret += this.metadata[i].songName
+    for(var i = 0; i < this.songs.length; i++) {
+      ret += this.songs[i].songName
     }
     return ret
   }

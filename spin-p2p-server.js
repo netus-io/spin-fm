@@ -22,6 +22,7 @@ const MESSAGE_TYPES = {
 };
 
 class P2PServer {
+
   constructor(metadata) {
     this.metadata   = metadata
     this.sockets    = []
@@ -55,11 +56,12 @@ class P2PServer {
  
   heartbeat() {
     this.isAlive = true;
-    console.log('\tHEARTBEAT..')
+    // console.log('\tHEARTBEAT.. ' + this.server.clients.length)
+    // console.log('\tHEARTBEAT.. ' + this.sockets.length)
   }
 
   connectSocket(messageType, socket) {
-    // this.sockets.push(socket)
+    this.sockets.push(socket)
     console.log('Connecting to socket...')
     socket.isAlive = true
     // We recieve a pong-heartbeat from a peer
@@ -74,12 +76,19 @@ class P2PServer {
       const data = JSON.parse(message)
       console.log('data', data)
       // this.roomMetadata.replaceMetadata(data)
+
+      console.log('SWITCH... ' + data)
       switch(data.type) {
         case MESSAGE_TYPES.metadataShare:
-          this.syncMetadata()
+          // this.syncMetadata()
+          console.log('DATA:::: ' + Object.keys(data))
+          console.log('metadata:::: ' + JSON.stringify(data.metadata))
+          // this.metadata = data.metadata
+          this.metadata.replaceMetadata(data.metadata.songs)
+          console.log('METADASHARE_RECEIVED')
           break
         case MESSAGE_TYPES.djNew:
-          this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
+          this.sendMetadata(MESSAGE_TYPES.metadataShare, socket, this.metadata)
           break
         case MESSAGE_TYPES.djNext:
           break
@@ -95,13 +104,17 @@ class P2PServer {
     })
   }
 
-  sendMetadata(messageType, socket) {
-    socket.send(JSON.stringify({ type: messageType, metadata: this.metadata })) // could send array/binary-data
+  sendMetadata(messageType, socket, data) {
+    socket.send(JSON.stringify({ type: messageType, metadata: data })) // could send array/binary-data
   }
 
   syncMetadata() {
-    this.server.clients.forEach(socket => {
-      this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
+    // this.server.clients.forEach(socket => {
+    //   this.sendMetadata(MESSAGE_TYPES.metadataShare, socket, this.metadata)
+    // })
+    console.log('SYNC WITH.... ' + this.metadata)
+    this.sockets.forEach(socket => {
+      this.sendMetadata(MESSAGE_TYPES.metadataShare, socket, this.metadata)
     })
   }
 

@@ -26,7 +26,7 @@ app.get('/spinningfm')
 // Adding a song is like mining
 app.post('/addSong', (req, res) => {
   // const metadata = metadata.addMetadata(req.body.data)
-  const song = metdata.addMetadata(req.body.data)
+  const song = metadata.addMetadata(req.body.data)
   console.log(`New song added to the queue: ${song.toString()}`)
   p2pServer.syncMetdata()
   res.redirect('/metadata') // Share updated metadata
@@ -40,7 +40,9 @@ app.post('/addNewSong', upload.any(), (req, res) => {
     console.log('Filename... ' + req.files[0].originalname)
     // const filename = req.files.
     const uploadStatus = 'File Uploaded Successfully'
-    const song = metadata.addMetadata({ songName:  req.files[0].originalname, data: req.body.data })
+    // const song = metadata.addMetadata({ songName:  req.files[0].originalname, data: req.body.data })
+    console.log('AFTER_ADD:: ' + metadata)
+    p2pServer.metadata.addMetadata({ songName:  req.files[0].originalname, data: req.body.data })
     p2pServer.syncMetadata()
     res.redirect('/metadata') // Share updated metadata
   } else {
@@ -48,9 +50,6 @@ app.post('/addNewSong', upload.any(), (req, res) => {
     const filename = 'FILE NOT UPLOADED'
     const uploadStatus = 'File Upload Failed'
   }
-  
-  // const songName = JSON.stringify(req.file.filename)
-  // console.log(`New song added to the queue: ${songName}`)
 });
 
 
