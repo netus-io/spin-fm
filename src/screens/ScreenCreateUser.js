@@ -121,23 +121,16 @@ class ScreenCreateUser extends Component {
             </div>
             <div className="col s12 m4 l4">
               <div className="card small hoverable">
-              <Avatar
-                svgId="head-ox"
-                source="./assets/tough-ox-front-head.svg"
-                avatarId="head-ox"
-                animType="HEAD_BOP"
-                />
-              </div>
-            </div>
-            <div className="col s12 m4 l4">
-              <div className="card small hoverable">
                 <Avatar
-                  svgId="head-robot"
-                  source="./assets/robot-head.svg"
-                  avatarId="head-robot-helmet"
+                  svgId="head-ox"
+                  source="./assets/tough-ox-front-head.svg"
+                  avatarId="head-ox"
                   animType="HEAD_BOP"
                   />
               </div>
+            </div>
+            <div className="col s12 m4 l4">
+              <div className="card small hoverable"></div>
             </div>
           </div>
 

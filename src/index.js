@@ -20,7 +20,6 @@ ReactDOM.render(
   <Provider store={ store }>
     <Router>
       <div className="app">
-        <Header/>
         <Switch>
           <Route exact path="/" render={() => (
             isLoggedIn() ? (
