@@ -18,7 +18,7 @@ const p2pServer = new P2PServer(metadata)
 app.use(bodyParser.json())
 
 app.get('/metadata', (req, res) => {
-  res.json(metadata.metadata.length)
+  res.json(metadata)
 })
 
 app.get('/spinningfm')

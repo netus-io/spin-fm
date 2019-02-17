@@ -96,7 +96,7 @@ class P2PServer {
 
   syncMetadata() {
     this.server.clients.forEach(socket => {
-      this.sendMetata(socket)
+      this.sendMetadata(socket)
     })
   }
 
