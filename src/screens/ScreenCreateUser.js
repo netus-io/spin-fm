@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import { NavLink, Link, Image } from 'react-router-dom'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import Avatar from '../components/Avatar'
 
+import Avatar from '../components/Avatar'
+import truffleContract from 'truffle-contract'
+import web3 from 'web3'
+//import Avatar from '../../ethereum/build/contracts/Avatar.json';
 
 import { actionOne } from '../actions'
 
@@ -15,6 +18,7 @@ class ScreenCreateUser extends Component {
       initialAvatar: "https://i.ibb.co/S3njdRS/empty-avatar.png"
     }
     this.onSelectedItem = this.onSelectedItem.bind(this)
+    super(props)
   }
 
   onSelectedItem(obj) {
@@ -27,10 +31,20 @@ class ScreenCreateUser extends Component {
       this.props.history.push('/screenLoungeArea/' + obj.name)
     })
   }
+
   setAvatarInState(){
     console.log('jm clicked!')
   }
+  
+  componentDidMount(){
+  console.log("mounting !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+  let avatar=truffleContract(Avatar)
+  const web3 = new Web3(new Web3.providers.HttpProvider('https://sokol.poa.network', 0))
+  avatar.setProvider(web3.provider)
+  console.log(web3)
+  console.log(avatar)
 
+  }
   render() {
     const queryingNetus = this.state.queryingNetus
     let preloaderBar
