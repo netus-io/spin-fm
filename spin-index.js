@@ -7,9 +7,23 @@ const P2PServer   = require('./spin-p2p-server')
 const HTTP_PORT = process.env.HTTP_PORT || 3001
 // HTTP_PORT=3002 npm run dev //example
 
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './playlist/')
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+// const upload = multer({
+//   dest: './playlist', // this saves your file into a directory called "playlist"
+//   storage: storage
+// });
+
 const upload = multer({
-  dest: './playlist' // this saves your file into a directory called "playlist"
-}); 
+  storage: storage
+});
 
 const app = express()
 const metadata = new Metadata()
