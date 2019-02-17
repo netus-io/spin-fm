@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import ReactSVG from 'react-svg'
+import Gauge from 'react-radial-gauge';
 
 import { addChatRoomMessage, addSong, addSongs, removeSong, removeAllSongs } from '../actions'
 import AudioPlayer from '../components/AudioPlayer'
@@ -15,7 +16,7 @@ import ChatRoom from '../components/ChatRoom'
 import '../components/DanceFloor/DanceFloor.css'
 
 class ScreenMusicRoom extends Component {
-  
+
   state = {
     trackList: {
       c2bc5d939cce3388ac8ukj44de79ca6fa3784e63bc: {
@@ -148,7 +149,7 @@ class ScreenMusicRoom extends Component {
       return <h4 className="drop-message">Drag and drop some files on me, or click to select.</h4>
     }
   }
-  
+
   render() {
     // const { networkId } = this.props.match.params
     return (
@@ -161,7 +162,7 @@ class ScreenMusicRoom extends Component {
             </div>
             <div className="row center">
               {/* <audio id = "audio-player" controls autoPlay src="http://localhost:3000/spinningfm#t=80"></audio> */}
-              <AudioPlayer 
+              <AudioPlayer
                 id = 'audio-player'
                 src="http://localhost:3000/spinningfm"
                 controls={true}
@@ -170,32 +171,32 @@ class ScreenMusicRoom extends Component {
             {/* <!-- START OF DJ-ROW --> */}
             <div className="row">
               <div className="col m3">
-                <Avatar 
-                  svgId="dj-1" 
+                <Avatar
+                  svgId="dj-1"
                   source="./assets/robot.svg"
                   avatarId="head-robot-helmet"
                   animType="HEAD_BOP"
                   />
               </div>
               <div className="col m3">
-                <Avatar 
-                  svgId="dj-2" 
+                <Avatar
+                  svgId="dj-2"
                   source="./assets/girl-blond.svg"
                   avatarId="head-girl"
                   animType="HEAD_BOP"
                   />
               </div>
               <div className="col m3">
-                <Avatar 
-                  svgId="dj-3" 
+                <Avatar
+                  svgId="dj-3"
                   source="./assets/pig.svg"
                   avatarId="head-piggy"
                   animType="HEAD_BOP"
                   />
               </div>
               <div className="col m3">
-                <Avatar 
-                  svgId="dj-4" 
+                <Avatar
+                  svgId="dj-4"
                   source="./assets/boy-brunette.svg"
                   avatarId="head-boy"
                   animType="HEAD_BOP"
@@ -205,8 +206,8 @@ class ScreenMusicRoom extends Component {
             {/* <!-- /END OF DJ-ROW --> */}
             {/* <!-- START OF DANCEFLOOR-ROW --> */}
             <div className="row">
-              <ReactSVG 
-                src="./assets/gauge.svg" 
+              <ReactSVG
+                src="./assets/gauge.svg"
                 evalScripts="always"
                 fallback={() => <span>Error!</span>}
                 loading={() => <span>Loading</span>}
@@ -214,10 +215,27 @@ class ScreenMusicRoom extends Component {
                 />
             </div>
             {/* <!-- END OF DANCEFLOOR-ROW --> */}
-
+            {/* <!-- START OF GAUGE-ROW --> */}
+            <div className='center' style={{transform:'rotate(270deg)'}}>
+            <Gauge
+              size='400'
+              currentValue='10'
+              dialWidth='30'
+              dialColor='gray'
+              progressWidth='40'
+              progressColor='green'
+              needleColor='green'
+              tickLength='10'
+              tickWidth='5'
+              needleBaseSize='5'
+              needleBaseColor='black'
+              progressFontSize='0'
+            />
+            </div>
+            {/* <!-- /END OF GAUGE-ROW --> */}
           </div>
           {/* <!-- /END OF MAIN-STAGE COLUMN --> */}
-          
+
           {/* <!-- START OF RIGHT COLUMN --> */}
           <div className="col m4 l3">
             {/* <!-- START OF PLAYLIST-ROW --> */}
@@ -245,7 +263,7 @@ class ScreenMusicRoom extends Component {
             {/* <!-- /END OF PLAYLIST-ROW --> */}
             {/* <!-- START OF CHATROOM-ROW --> */}
             <div className="row row-10px">
-              <ChatRoom 
+              <ChatRoom
                 chatroomInfo={ this.props.chatroomInfo }
                 addChatRoomMessage = { this.props.addChatRoomMessage }
               />

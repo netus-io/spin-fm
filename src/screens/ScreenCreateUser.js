@@ -27,6 +27,9 @@ class ScreenCreateUser extends Component {
       this.props.history.push('/screenLoungeArea/' + obj.name)
     })
   }
+  setAvatarInState(){
+    console.log('jm clicked!')
+  }
 
   render() {
     const queryingNetus = this.state.queryingNetus
@@ -55,7 +58,8 @@ class ScreenCreateUser extends Component {
             flexDirection:'column',
             flex:1,
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            paddingTop: '20%'
           }}>
               <img className="circle" src={this.state.initialAvatar} />
               <h3>[username]</h3>
@@ -63,7 +67,7 @@ class ScreenCreateUser extends Component {
             </div>
         </div>
 
-        <div className=''
+        <div className='container'
         style={{
           // width:'70%',
           // height:'100vh',
@@ -103,24 +107,40 @@ class ScreenCreateUser extends Component {
                 </div>
             </div>
           </div>
+
           <div className='row'>
+            <div className="col s12 m4 l4">
+              <div className="card small hoverable" onClick={this.setAvatarInState()}>
+                <Avatar
+                  svgId="head-robot"
+                  source="./assets/robot-head.svg"
+                  avatarId="head-robot-helmet"
+                  animType="HEAD_BOP"
+                  />
+              </div>
+            </div>
             <div className="col s12 m4 l4">
               <div className="card small hoverable">
               <Avatar
-                svgId="head-robot"
-                source="./assets/robot-head.svg"
-                avatarId="head-robot-helmet"
+                svgId="head-ox"
+                source="./assets/tough-ox-front-head.svg"
+                avatarId="head-ox"
                 animType="HEAD_BOP"
                 />
               </div>
             </div>
             <div className="col s12 m4 l4">
-              <div className="card small hoverable"></div>
-            </div>
-            <div className="col s12 m4 l4">
-              <div className="card small hoverable"></div>
+              <div className="card small hoverable">
+                <Avatar
+                  svgId="head-robot"
+                  source="./assets/robot-head.svg"
+                  avatarId="head-robot-helmet"
+                  animType="HEAD_BOP"
+                  />
+              </div>
             </div>
           </div>
+
           <div className="row center">
             <Link to="/screenLoungeArea" className=" waves-effect waves-light btn-large">
               <i className=" material-icons left">open_in_new</i>Create character
