@@ -17,10 +17,10 @@ let webContents
 function createWindow () {
   mainWindow = new MainWindow(`file://${__dirname}/src/index.html`)
 
-  mainWindow.on('closed', function() {
-    console.log('MainWindow closed')
-    mainWindow = null
-  })
+  // mainWindow.on('closed', function() {
+  //   console.log('MainWindow closed')
+  //   mainWindow = null
+  // })
 
   // session = mainWindow.webContents.session
   webContents = mainWindow.webContents
@@ -29,6 +29,18 @@ function createWindow () {
   //   console.log('NEW WINDOW: ' + url)
   //   // event.preventDefault();
   // })
+  /*
+  webContents.on('new-window', function (e, url, frameName, disposition, options) {
+    options.webPreferences.affinity = 'main-window';
+    Object.assign(options, {
+      width: 100,
+      height: 500
+    })
+    // not really need uncomment next lines. not sure, but navigation(in child window) may break, or something else
+    // e.newGuest = new BrowserWindow(options)
+    // e.preventDefault();
+  })
+  */
 }
 
 app.on('ready', createWindow)
@@ -61,8 +73,6 @@ app.on('active', function() {
     createWindow()
   }
 })
-
-
 
 // ipcMain.on('oauth:portis', (event, arg) => {
 //   web3.eth.getAccounts((error, accounts) => {

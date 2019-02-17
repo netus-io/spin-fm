@@ -30,10 +30,21 @@ class ScreenLogin extends Component {
       console.log("Action One - Going to ScreenLoungeArea::: " + JSON.stringify(obj))
       this.props.history.push('/screenLoungeArea/' + obj.name)
     })
-
   }
 
-  componentWillMount() {
+  // componentWillMount() {
+    // web3.eth.getAccounts((error, accounts) => {
+    //   if(error) {
+    //     console.log(`ERROR: ${error}`)
+    //     return
+    //   }
+    //   console.log(`SUCCESS!`)
+    //   console.log(`PORTIS ACCOUNT: ${accounts}`);
+    // });
+  // }
+
+  _startPortis(){
+    console.log('jm portis')
     web3.eth.getAccounts((error, accounts) => {
       if(error) {
         console.log(`ERROR: ${error}`)
@@ -42,11 +53,6 @@ class ScreenLogin extends Component {
       console.log(`SUCCESS!`)
       console.log(`PORTIS ACCOUNT: ${accounts}`);
     });
-  }
-
-
-  _startPortis(){
-    console.log('jm portis')
   }
 
   render() {

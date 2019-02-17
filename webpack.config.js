@@ -35,10 +35,14 @@ module.exports = {
         test: /\.css$/,
         loader: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i, 
+        loader: "file-loader"
+    }
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.svg', '.png']
+    extensions: ['.js', '.jsx', '.svg', '.jpeg', 'jpg']
   },
   devServer: {
     historyApiFallback: true,
