@@ -35,6 +35,7 @@
     "electron": "4.0.0",
     "express": "^4.16.4",
     "install": "^0.12.2",
+    "json-loader": "^0.5.7",
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "moment-duration-format": "^2.2.2",
@@ -56,6 +57,7 @@
     "@portis/web3": "^2.0.0-beta.11",
     "mdbreact": "^4.10.0",
     "react-scripts": "^2.1.5",
+    "truffle-contract": "^4.0.5",
     "web3": "^1.0.0-beta.46"
   }
 }
