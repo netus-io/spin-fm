@@ -3,10 +3,20 @@ const WebSocket = require('ws')
 const P2P_PORT = process.env.P2P_PORT || 5001
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : []
 // HTTP_PORT=3002 P2P_PORT=5003 npm run dev
-// HTTP_PORT=3002 P2P_PORT=5003 PEERS=ws://10.0.1.28:5003, npm run dev
+// HTTP_PORT=3002 P2P_PORT=5003 PEERS=ws://10.0.1.28:5003 npm run dev
 // HTTP_PORT=3002 P2P_PORT=5003 PEERS=ws://10.0.1.28:5003, ws://10.0.0.222:5003 npm run dev
 // HTTP_PORT=3002 P2P_PORT=5003 PEERS=ws://10.0.1.28:5003, ws://10.0.0.208:5003 npm run dev
 // HTTP_PORT=3002 P2P_PORT=5003 PEERS=ws://localhost:5003, ws://localhost:5003 npm run dev
+
+const MESSAGE_TYPES = {
+  djNew:          'DJ_NEW',
+  djLeft:         'DJ_LEFT',
+  djNext:         'DJ_NEXT',
+  djDancing:      'DJ_DANCING',
+  songNew:        'SONG_NEW',
+  songRemoved:    'SONG_REMOVED',
+  metadataClear:  'METADATA_CLEAR'
+};
 
 class P2PServer {
   constructor(metadata) {
@@ -49,6 +59,7 @@ class P2PServer {
     // this.sockets.push(socket)
     console.log('Socket connected')
     socket.isAlive = true
+    // We recieve a pong-heartbeat from a peer
     socket.on('pong', this.heartbeat);
 
     this.messageHandler(socket)
@@ -60,16 +71,36 @@ class P2PServer {
       const data = JSON.parse(message)
       console.log('data', data)
       // this.roomMetadata.replaceMetadata(data)
+      switch(data.type) {
+        case MESSAGE_TYPES.djNext:
+          break
+        case MESSAGE_TYPES.djDancing:
+          break
+        case MESSAGE_TYPES.songNew:
+          break
+      }
     })
   }
 
-  sendMetadata(socket) {
-    socket.send(JSON.stringify(this.metadata)) // could send array/binary-data
+  sendMetadata(messageType, socket) {
+    socket.send(JSON.stringify({ type: messageType, metadata: this.metadata })) // could send array/binary-data
   }
 
   syncMetadata() {
     this.server.clients.forEach(socket => {
       this.sendMetata(socket)
+    })
+  }
+
+  broadcastMetadata(messageType, transaction) {
+    this.server.clients.forEach(socket => {
+      this.sendMetata(messageType, socket)
+    })
+  }
+
+  broadcastClearMetadata(messageType, transaction) {
+    this.server.clients.forEach(socket => {
+      this.sendMetata(MESSAGE_TYPES.metadataClear, socket)
     })
   }
 }

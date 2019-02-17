@@ -13,7 +13,8 @@ const p2pServer = new P2PServer(metadata)
 app.use(bodyParser.json())
 
 app.get('/metadata', (req, res) => {
-  res.json(metadata.metadata)
+  // res.json(metadata.metadata)
+  res.json('HEY!!!!!')
 })
 
 app.post('/mine', (req, res) => {
