@@ -41,8 +41,11 @@ contract("authTest", accounts => {
         var Token=await Avatar.deployed()
         await Token.mint(accounts[1], 77,{from:accounts[0]})
         await Token.mint(accounts[2],33,{from:accounts[0]})
+        await Token.mint(accounts[1], 77,{from:accounts[0]})
+        await Token.mint(accounts[2],33,{from:accounts[0]})
         console.log(await Token.createdTokens())
-        DJS.createSession(time+10,time+600,1000,1000000000,5);
+        console.log(await Token.tokenOfOwnerByIndex(accounts[2],1)+ "second TOken ID")
+        DJS.createSession("Hot Ham",time+10,time+600,1000,1000000000,5);
         console.log(await DJS.AllSessions(1))
         await DJS.register(1,1,{from:accounts[1],value:1000000000})
         await DJS.register(1,2,{from:accounts[2],value:1000000000})

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, Link, Text } from 'react-router-dom'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import tx from './ethereumjs-tx'
+import TX from './ethereumjs-tx'
 import { actionOne } from '../actions'
 import truffleContract from "truffle-contract";
 
@@ -34,64 +34,65 @@ class ScreenLogin extends Component {
 
   }
 
-  componentWillMount () {
-    console.log(tx +"sjfowajefp")
-    console.log("mounting !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    console.log(Avatar)
+  componentWillMount (){
+   
     var web3 = new Web3(new Web3.providers.HttpProvider('https://sokol.poa.network'))
     //let web3 = new Web3(new Web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
-    let avatar=new web3.eth.Contract(Avatar.abi, "0xd2f44fa6eccc4e04e9ccee6ada1a91dbe7e2c8a8")
+    let avatar=new web3.eth.Contract(Avatar.abi, "0xa8f7525f29435e761255433a69f7e9b662b4b947")
     console.log(avatar)
     avatar.methods.createdTokens().call().then((result)=>{console.log(result+"tokens")})
-    const TX={
-      from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
-      gasPrice: "20000000000",
-      gas: "21000",
-      to: '0x3535353535353535353535353535353535353535',
-      value: "1000000000000000000",
-      data: ""
-  }
-  var transaction = new tx(TX)
-   transaction.sign('BCA93B325843D996FF4E3F68A66DB374BDCA103E0B7E9374AB00C0BEFD75A99E')
-   console.log(transaction)
-   const serializedTx = transaction.serialize().toString('hex')
-   console.log(serializedTx)
-   //web3.eth.sendSignedTransaction('0x' + serializedTx)
-    // let accounts=web3.eth.accounts.privateKeyToAccount('BCA93B325843D996FF4E3F68A66DB374BDCA103E0B7E9374AB00C0BEFD75A99E');
-    // console.log(JSON.stringify(accounts)+"accoisjoiej")
-    // //avatar.methods.createdTokens().mint().send()
-    // console.log(web3.eth.getAccounts().then((r)=>{console.log(r)}))
+    // this.Mint('0x1789e8fCa257492556c36EF0E803a9919bC42b49',1,web3,avatar)
+    avatar.methods.AvatarId(2).call().then((result)=>{console.log(result+"character")})
+    avatar.methods.tokenOfOwnerByIndex('0x1789e8fCa257492556c36EF0E803a9919bC42b49',1).call().then((r)=>{console.log(r+"tokenID")}) 
+ 
 
-    const accnt = web3.eth.accounts.create()
-    console.log(web3.eth.accounts)
-    // console.log('NEW ACCOUNT: ' + JSON.stringify(accnt))
-    web3.eth.getAccounts().then( (r) => {
-      console.log('FIRST ACCOUNT: ' + r)
-    })
-    
+  //  web3.eth.sendSignedTransaction('0x' + serializedTx).then((r)=>{
    
-
-    web3.eth.personal.newAccount('password')
-    .then((e) => {
-      console.log('HEY: ' + (e))
-    })
-    // web3.eth.getAccounts().then( (r) => {
-    //   console.log('FIRST ACCOUNT: ' + r[0])
-    // })
-    
-    
-   // web3 = new Web3(web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
-    // console.log(web3.currentProvider)
-   
-    // var web3 = new Web3()
-    //web3 = new Web3(web3.currentProvider)
-    //web3 = new Web3(web3.setProvider())
-    
-    
-  }
-
 
   
+
+   
+    
+   // web3 = new Web3(web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
+ 
+    
+    
+  }
+
+
+   CreateTX(nonce,gasPrice,gasLimit,value,to,data,pk){
+    const tx = new TX(null, 1);
+    tx.nonce = nonce
+    tx.gasPrice = gasPrice
+    tx.gasLimit = gasLimit
+    tx.value = value
+    // console.log(tx.gasPrice.toString('hex') + 'gasprice')
+    console.log(pk)
+      tx.to=to
+      // console.log('notcontract')
+    
+      
+    tx.data = data
+    // const pk = Buffer.from(privateKey, 'hex')
+    tx.sign(pk)
+    const ret="0x"+tx.serialize().toString('hex')
+    return ret
+  }
+  
+  //Old Token 0xd2f44fa6eccc4e04e9ccee6ada1a91dbe7e2c8a8
+  Mint(address,avatar,web3,AVatar){
+   web3.eth.getTransactionCount('0x1789e8fCa257492556c36EF0E803a9919bC42b49').then((nonce)=>{
+  console.log(nonce)
+  let gas=1000000
+  let pk='BCA93B325843D996FF4E3F68A66DB374BDCA103E0B7E9374AB00C0BEFD75A99E'
+  let DATA =AVatar.methods.mint(address,avatar).encodeABI()
+  let TXData=this.CreateTX(nonce,'0x4a817c800',1000000,0,'0xa8f7525f29435e761255433a69f7e9b662b4b947',DATA,pk)
+  console.log(TXData)
+   web3.eth.sendSignedTransaction(TXData).then((hash)=>{
+       console.log(hash)
+  })
+   })
+}
 
   render() {
     const queryingNetus = this.state.queryingNetus

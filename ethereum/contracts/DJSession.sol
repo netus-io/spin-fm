@@ -11,6 +11,7 @@ uint public totalSessions;
 constructor(address tokenaddress){
 a=Avatar(tokenaddress);
 }
+
 modifier inSession(uint s){
 require((now>AllSessions[s].start) &&(now<AllSessions[s].end));
 _;
@@ -65,10 +66,10 @@ function DownVotesInInterval(uint s,uint e,uint sess) returns(uint total){
 }
 function createSession(string name,uint _start,uint _end,uint _maxAttendees,uint _price,uint _votesPerTicket){
     require(now<_start);
-    AllSessions[totalSessions+1]=Session(uint name,_start,_end,0,_maxAttendees,_price,_votesPerTicket,0,msg.sender,0,0);
+    AllSessions[totalSessions+1]=Session( name,_start,_end,0,_maxAttendees,_price,_votesPerTicket,0,msg.sender,0,0);
     SessionOwner[totalSessions+1]=msg.sender;
     totalSessions=totalSessions+1;
-    emit SessionCreated( _start, _end, _price,msg.sender,totalSessions-1);
+    emit SessionCreated( _start, _end, _price,msg.sender,name,totalSessions);
 }
 
 function upVote(uint session,uint token ){
@@ -107,7 +108,7 @@ function register(uint session,uint token) payable{
     AllSessions[session].registeredUser[token]=true;
     AllSessions[session].totalAttendees+=1;
     AllSessions[session].earnings+=msg.value;
-    emit();
+    emit Registered(session,token);
 }
 
 function withdrawSessionEarnings(uint s){
