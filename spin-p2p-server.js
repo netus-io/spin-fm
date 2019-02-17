@@ -75,6 +75,9 @@ class P2PServer {
       console.log('data', data)
       // this.roomMetadata.replaceMetadata(data)
       switch(data.type) {
+        case MESSAGE_TYPES.metadataShare:
+          this.syncMetadata()
+          break
         case MESSAGE_TYPES.djNew:
           this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
           break
@@ -85,6 +88,8 @@ class P2PServer {
         case MESSAGE_TYPES.songNew:
           break
         case MESSAGE_TYPES.netState:
+          break
+        default:
           break
       }
     })
