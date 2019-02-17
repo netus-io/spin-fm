@@ -6,6 +6,7 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import ReactSVG from 'react-svg'
 import Gauge from 'react-radial-gauge';
+const fetch = require('node-fetch');
 
 
 import { addChatRoomMessage, addSong, addSongs, removeSong, removeAllSongs } from '../actions'
@@ -107,6 +108,23 @@ class ScreenMusicRoom extends Component {
     super(props)
     this.onAddTrack = this.onAddTrack.bind(this)
     this.removeTrack = this.removeTrack.bind(this)
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => this.getItems(), 2000);
+  }
+
+  componentWillUnmount() {
+    this.timer = null; // here...
+  }
+
+  getItems() {
+    fetch('http://localhost:2000/metadata')
+      .then(result => result.json())
+      .then((result) => {
+        this.setState({ metadata: result })
+        console.log(result)
+      })
   }
 
   onAddTrack(file) {
