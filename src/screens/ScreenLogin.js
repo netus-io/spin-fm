@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { actionOne } from '../actions'
+import './ScreenLogin.css'
 
 import Portis from '@portis/web3';
 import Web3 from 'web3';
@@ -75,22 +76,28 @@ class ScreenLogin extends Component {
         backgroundColor: 'black',
         backgroundImage: 'url(https://backgrounds.wetransfer.net/sudanarchives1_1280x800.jpg)'
       }}>
-        <div
-        className="container">
-          <div
-          className="row center">
-            <div
-            className="card large">
-                <h1>Spin.fm</h1>
-                <Link to="#" onClick={() => this._startPortis()} className="light-blue waves-effect waves-light btn-large">
-                <i className="material-icons left">open_in_new</i>Log In
-                </Link>
+        <div className="borderRadiusImportant row">
+        <div className="col s12 m2"></div>
+          <div className="col s12 m3">
+            <div className="card"
+            style={{
+              height: '50vh',
+              display:'flex',
+              justifyContent:'center',
+              alignItems: 'center',
+              flexDirection: 'column'
+            }}>
+              <h1>spin.fm</h1>
 
-                <br />
 
-                <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
-                <i className="material-icons left">open_in_new</i>Shortcut
-                </Link>
+              <Link to="#" onClick={() => this._startPortis()} className="light-blue waves-effect waves-light btn-large">
+              <i className="material-icons left">open_in_new</i>Log In
+              </Link>
+
+
+              <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
+              <i className="material-icons left">open_in_new</i>Shortcut
+              </Link>
             </div>
           </div>
         </div>

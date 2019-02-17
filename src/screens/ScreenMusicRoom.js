@@ -205,15 +205,6 @@ class ScreenMusicRoom extends Component {
             </div>
             {/* <!-- /END OF DJ-ROW --> */}
             {/* <!-- START OF DANCEFLOOR-ROW --> */}
-            <div className="row">
-              <ReactSVG
-                src="./assets/gauge.svg"
-                evalScripts="always"
-                fallback={() => <span>Error!</span>}
-                loading={() => <span>Loading</span>}
-                svgStyle={{ width: 150, heght: 400 }}
-                />
-            </div>
             {/* <!-- END OF DANCEFLOOR-ROW --> */}
             {/* <!-- START OF GAUGE-ROW --> */}
             <div className='center' style={{transform:'rotate(270deg)'}}>
