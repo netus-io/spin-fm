@@ -103,6 +103,7 @@ function mapStateToProps(state) {
   console.log('STATE:: ' + JSON.stringify(state))
   return {
     dummyStateList:     state.dummyStateList,
+    user:               state.user
   }
 }
 
