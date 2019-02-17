@@ -121,14 +121,6 @@ class ScreenLogin extends Component {
               flexDirection: 'column'
             }}>
                 <h1>Spin.fm</h1>
-                <Link to="#"  className="waves-effect waves-light btn-large">
-                <i className="material-icons left">open_in_new</i>Log In
-                </Link>
-                <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
-                <i className="material-icons left">open_in_new</i>Shortcut
-                </Link>
-            </div>
-
 
               <Link to="#" onClick={() => this._startPortis()} className="light-blue waves-effect waves-light btn-large">
               <i className="material-icons left">open_in_new</i>Log In
