@@ -8,7 +8,7 @@ const HTTP_PORT = process.env.HTTP_PORT || 3001
 // HTTP_PORT=3002 npm run dev //example
 
 const upload = multer({
-  dest: 'playlist/' // this saves your file into a directory called "playlist"
+  dest: './playlist' // this saves your file into a directory called "playlist"
 }); 
 
 const app = express()
@@ -33,13 +33,24 @@ app.post('/addSong', (req, res) => {
 })
 
 // Adding a song is like mining
-app.post('/addNewSong', upload.single('file-to-upload'), (req, res) => {
-  const song = metadata.addMetadata(req.body.data)
-  console.log(`New song added to the queue: ${song.toString()}`)
-
-  p2pServer.syncMetadata()
-
-  res.redirect('/metadata') // Share updated metadata
+app.post('/addNewSong', upload.any(), (req, res) => {
+  // console.log(Object.keys(req))
+  if(req.files) {
+    console.log('Uploading file...' + req.files.length)
+    console.log('Filename... ' + req.files[0].originalname)
+    // const filename = req.files.
+    const uploadStatus = 'File Uploaded Successfully'
+    const song = metadata.addMetadata({ songName:  req.files[0].originalname, data: req.body.data })
+    p2pServer.syncMetadata()
+    res.redirect('/metadata') // Share updated metadata
+  } else {
+    console.log('No File Uploaded')
+    const filename = 'FILE NOT UPLOADED'
+    const uploadStatus = 'File Upload Failed'
+  }
+  
+  // const songName = JSON.stringify(req.file.filename)
+  // console.log(`New song added to the queue: ${songName}`)
 });
 
 

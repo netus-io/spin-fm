@@ -12,6 +12,14 @@ class Metadata {
   replaceMetadata(newMetadata) {
     this.metadata = newMetadata
   }
+
+  toString() {
+    var ret = ''
+    for(var i = 0; i < this.metadata.length; i++) {
+      ret += this.metadata[i].songName
+    }
+    return ret
+  }
 }
 
 module.exports = Metadata
