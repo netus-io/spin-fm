@@ -12,7 +12,7 @@ contract Avatar is ERC721Full, ERC721Mintable {
   constructor() ERC721Full("MyNFT", "MNFT") public {
   }
 
-  function mint(address to, uint Avatar) public onlyMinter returns (bool) {
+  function mint(address to, uint Avatar) public  returns (bool) {
         uint tokenId= createdTokens+1;
         _mint(to, tokenId);
         AvatarId[tokenId]=Avatar;

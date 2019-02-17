@@ -4,12 +4,14 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import { actionOne } from '../actions'
+import './ScreenLogin.css'
+import truffleContract from "truffle-contract";
 
-import Portis from '@portis/web3';
 import Web3 from 'web3';
 
-const portis = new Portis('55f3b60f-eacd-4e7b-8d39-bcf0d516dee1', 'kovan');
-const web3 = new Web3(portis.provider);
+
+ import Avatar from '../../ethereum/build/contracts/Avatar.json';
+//import * as Avatar from '../../ethereum/build/contracts/Avatar.json'
 
 class ScreenLogin extends Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class ScreenLogin extends Component {
       dummyStateVar: false
     }
     this.onSelectedItem   = this.onSelectedItem.bind(this)
-    this._startPortis     = this._startPortis.bind(this)
+
   }
 
   onSelectedItem(obj) {
@@ -32,16 +34,48 @@ class ScreenLogin extends Component {
     })
   }
 
-  // componentWillMount() {
-    // web3.eth.getAccounts((error, accounts) => {
-    //   if(error) {
-    //     console.log(`ERROR: ${error}`)
-    //     return
-    //   }
-    //   console.log(`SUCCESS!`)
-    //   console.log(`PORTIS ACCOUNT: ${accounts}`);
-    // });
-  // }
+  componentWillMount () {
+    console.log("mounting !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    console.log(Avatar)
+    var web3 = new Web3(new Web3.providers.HttpProvider('https://sokol.poa.network'))
+    let avatar=new web3.eth.Contract(Avatar.abi, "0xd2f44fa6eccc4e04e9ccee6ada1a91dbe7e2c8a8")
+    avatar.methods.createdTokens().call().then((result)=>{console.log(result+"tokens")})
+
+    // let accounts=web3.eth.accounts.privateKeyToAccount('BCA93B325843D996FF4E3F68A66DB374BDCA103E0B7E9374AB00C0BEFD75A99E');
+    // console.log(JSON.stringify(accounts)+"accoisjoiej")
+    // //avatar.methods.createdTokens().mint().send()
+    // console.log(web3.eth.getAccounts().then((r)=>{console.log(r)}))
+
+    const accnt = web3.eth.accounts.create()
+    console.log(web3.eth.accounts)
+    // console.log('NEW ACCOUNT: ' + JSON.stringify(accnt))
+    web3.eth.getAccounts().then( (r) => {
+      console.log('FIRST ACCOUNT: ' + r)
+    })
+
+    console.log(web3.eth.personal)
+
+    web3.eth.personal.newAccount('password')
+    .then((e) => {
+      console.log('HEY: ' + (e))
+    })
+    // web3.eth.getAccounts().then( (r) => {
+    //   console.log('FIRST ACCOUNT: ' + r[0])
+    // })
+
+
+   // web3 = new Web3(web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
+    // console.log(web3.currentProvider)
+    // const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://3.85.253.242.8545'))
+    // var web3 = new Web3()
+    //web3 = new Web3(web3.currentProvider)
+    //web3 = new Web3(web3.setProvider())
+
+
+  }
+
+
+
 
   _startPortis(){
     console.log('jm portis')
@@ -75,22 +109,35 @@ class ScreenLogin extends Component {
         backgroundColor: 'black',
         backgroundImage: 'url(https://backgrounds.wetransfer.net/sudanarchives1_1280x800.jpg)'
       }}>
-        <div
-        className="container">
-          <div
-          className="row center">
-            <div
-            className="card large">
+        <div className="borderRadiusImportant row">
+        <div className="col s12 m2"></div>
+          <div className="col s12 m3">
+            <div className="card"
+            style={{
+              height: '50vh',
+              display:'flex',
+              justifyContent:'center',
+              alignItems: 'center',
+              flexDirection: 'column'
+            }}>
                 <h1>Spin.fm</h1>
-                <Link to="#" onClick={() => this._startPortis()} className="light-blue waves-effect waves-light btn-large">
+                <Link to="#"  className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Log In
                 </Link>
-
-                <br />
-
                 <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
                 <i className="material-icons left">open_in_new</i>Shortcut
                 </Link>
+            </div>
+
+
+              <Link to="#" onClick={() => this._startPortis()} className="light-blue waves-effect waves-light btn-large">
+              <i className="material-icons left">open_in_new</i>Log In
+              </Link>
+
+
+              <Link to="/screenCreateUser" className="waves-effect waves-light btn-large">
+              <i className="material-icons left">open_in_new</i>Shortcut
+              </Link>
             </div>
           </div>
         </div>
