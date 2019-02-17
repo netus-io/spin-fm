@@ -16,7 +16,8 @@ const MESSAGE_TYPES = {
   songNew:        'SONG_NEW',
   songRemoved:    'SONG_REMOVED',
   metadataShare:  'METADATA_SHARE',
-  metadataClear:  'METADATA_CLEAR'
+  metadataClear:  'METADATA_CLEAR',
+  netState:       'NET_STATE'
 };
 
 class P2PServer {
@@ -81,6 +82,8 @@ class P2PServer {
         case MESSAGE_TYPES.djDancing:
           break
         case MESSAGE_TYPES.songNew:
+          break
+        case MESSAGE_TYPES.netState:
           break
       }
     })
