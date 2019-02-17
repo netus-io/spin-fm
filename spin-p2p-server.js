@@ -15,6 +15,7 @@ const MESSAGE_TYPES = {
   djDancing:      'DJ_DANCING',
   songNew:        'SONG_NEW',
   songRemoved:    'SONG_REMOVED',
+  metadataShare:  'METADATA_SHARE',
   metadataClear:  'METADATA_CLEAR'
 };
 
@@ -57,13 +58,13 @@ class P2PServer {
 
   connectSocket(socket) {
     // this.sockets.push(socket)
-    console.log('Socket connected')
+    console.log('Connecting to socket...')
     socket.isAlive = true
     // We recieve a pong-heartbeat from a peer
     socket.on('pong', this.heartbeat);
 
     this.messageHandler(socket)
-    this.sendMetadata(socket)
+    this.sendMetadata(MESSAGE_TYPES.djNew, socket)
   }
 
   messageHandler(socket) {
@@ -72,6 +73,9 @@ class P2PServer {
       console.log('data', data)
       // this.roomMetadata.replaceMetadata(data)
       switch(data.type) {
+        case MESSAGE_TYPES.djNew:
+        this.sendMetadata(MESSAGE_TYPES.metadataShare, socket)
+          break
         case MESSAGE_TYPES.djNext:
           break
         case MESSAGE_TYPES.djDancing:
