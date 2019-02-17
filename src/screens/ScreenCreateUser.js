@@ -67,8 +67,8 @@ class ScreenCreateUser extends Component {
             paddingTop: '20%'
           }}>
               <img className="circle" src={this.state.initialAvatar} />
-              <h3>[username]</h3>
-              <h3>[0x address]</h3>
+              <h5>foo@bar.com</h5>
+              <p>0x7400CDceF6F385333df13aE47a5</p>
             </div>
         </div>
 
